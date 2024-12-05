@@ -1,15 +1,84 @@
-# Node.js dependencies for Angular
-/frontend/node_modules/
-/frontend/dist/
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-/# Build output for Spring Boot
-/backend/target/
+##################
+# General Git Ignores
+##################
 
-# OS-specific files
-.DS_Store
-Thumbs.db
+# System files
+.DS_Store             # macOS
+Thumbs.db             # Windows
+*.tmp                 # Temporary files
+*.bak                 # Backup files
 
-# IDE files
-.idea/
+# Logs
+*.log                 # Log files
+npm-debug.log*        # npm logs
+yarn-error.log*       # Yarn logs
+*.pid                 # PID files
+*.seed                # Seed files
+*.lock                # Lock files
+
+# Environment files
+*.env                 # Environment variables
+
+##################
+# Frontend (Angular) Specific
+##################
+
+# Compiled output
+/frontend/dist         # Angular build output
+/frontend/tmp          # Temporary files
+/frontend/out-tsc      # TypeScript compiler output
+/frontend/bazel-out    # Bazel build output (if using Bazel)
+
+# Node
+/frontend/node_modules # Node dependencies
+
+# Angular CLI
+/frontend/.angular/cache
+
+# Coverage
+/frontend/coverage     # Test coverage output
+
+# IDEs and editors
+/frontend/.idea/       # IntelliJ IDEA
+/frontend/.vscode/     # Visual Studio Code
+/frontend/*.sublime-workspace # Sublime Text workspace
+/frontend/.project     # Eclipse project files
+/frontend/.classpath   # Eclipse classpath
 .vscode/
-*.iml
+
+# Miscellaneous
+/frontend/.sass-cache/ # SASS cache
+/frontend/connect.lock
+/frontend/testem.log
+/frontend/libpeerconnection.log
+
+##################
+# Backend (Spring Boot) Specific
+##################
+
+# Compiled output
+/backend/target/       # Maven/Gradle build output
+/backend/out/          # Output folder (if configured)
+*.class                # Java compiled classes
+
+# Logs
+/backend/*.log         # Spring Boot logs
+/backend/spring.log
+/backend/*.pid         # PID files for Spring Boot
+
+# Dependencies
+/backend/.mvn/wrapper/maven-wrapper.jar # Maven wrapper JAR (can be re-downloaded)
+
+# IDEs and editors
+/backend/.idea/        # IntelliJ IDEA settings
+/backend/.vscode/      # Visual Studio Code settings
+/backend/.project      # Eclipse project
+/backend/.classpath    # Eclipse classpath
+/backend/.settings/    # Eclipse settings folder
+/backend/*.iml         # IntelliJ IDEA module files
+
+# Miscellaneous
+/backend/.env          # Environment files
+/backend/.history      # History files (if any)
