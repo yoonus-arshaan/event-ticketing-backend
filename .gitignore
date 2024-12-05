@@ -1,0 +1,15 @@
+# Node.js dependencies for Angular
+/frontend/node_modules/
+/frontend/dist/
+
+/# Build output for Spring Boot
+/backend/target/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.iml
