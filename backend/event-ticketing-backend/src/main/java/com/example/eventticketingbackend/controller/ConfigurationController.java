@@ -13,13 +13,13 @@ public class ConfigurationController {
     @Autowired
     private ConfigurationService configurationService;
 
-    @PostMapping
+    @PostMapping("/save")
     public String configure(@RequestBody Configuration configuration) {
         configurationService.saveConfiguration(configuration);
         return  "Configuration saved successfully";
     }
 
-    @GetMapping
+    @GetMapping("/get")
     public ResponseEntity<Configuration> getConfiguration() {
         return ResponseEntity.ok(configurationService.loadConfiguration());
     }

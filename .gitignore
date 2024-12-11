@@ -33,6 +33,7 @@ yarn-error.log*       # Yarn logs
 
 # Node
 /frontend/node_modules # Node dependencies
+/node_modules
 
 # Angular CLI
 /frontend/.angular/cache
