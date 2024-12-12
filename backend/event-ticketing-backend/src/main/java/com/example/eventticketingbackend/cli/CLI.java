@@ -87,6 +87,9 @@ public class CLI {
         boolean isValid = true;
         while(isValid) {
             try {
+                System.out.print("Enter Event name: ");
+                String eventName = scanner.nextLine();
+
                 System.out.print("Enter Total Number of Tickets: ");
                 int totalTickets = Integer.parseInt(scanner.nextLine());
 
@@ -99,6 +102,14 @@ public class CLI {
                 System.out.print("Enter Maximum Ticket Capacity: ");
                 int maxTicketCapacity = Integer.parseInt(scanner.nextLine());
 
+                System.out.print("Enter number of Customer willing to get tickets: ");
+                int numCustomers = Integer.parseInt(scanner.nextLine());
+
+                System.out.print("Enter number of vendors willing to post tickets: ");
+                int numVendors = Integer.parseInt(scanner.nextLine());
+
+
+
                 if (maxTicketCapacity < totalTickets) {
                     System.out.println("\nMax Ticket Capacity cannot exceed Total Tickets.");
                     continue;
@@ -106,7 +117,7 @@ public class CLI {
 //                ticketPool = new TicketPool(maxTicketCapacity);
 
                 // create and save configuration
-                Configuration configuration = new Configuration(totalTickets, ticketReleaseRate, customerRetrievalRate, maxTicketCapacity);
+                Configuration configuration = new Configuration(eventName, totalTickets, ticketReleaseRate, customerRetrievalRate, maxTicketCapacity, numCustomers, numVendors);
                 ConfigurationService configService = new ConfigurationService();
                 configService.saveConfiguration(configuration);
                 System.out.println("System configured successfully!");
@@ -126,14 +137,13 @@ public class CLI {
                 return;
             }
         }
-//        configuration = configurationService.loadConfiguration();
 
         logger.info("Starting the simulation...\n");
         TicketPool ticketPool = new TicketPool(configuration.getMaxTicketCapacity());
 
 
-//        Vendor[] vendors = new Vendor[1];
-        for (int i = 1; i <= 3; i++) {
+
+        for (int i = 1; i <= configuration.getNumVendors(); i++) {
             Vendor vendor = new Vendor(ticketPool, configuration.getTotalTickets(), configuration.getTicketReleaseRate());
             Thread vendorThread = new Thread(vendor, "Vendor-" + i);
             vendorThreads.add(vendorThread);
@@ -141,15 +151,14 @@ public class CLI {
         }
 
 
-//        Customer[] customers = new Customer[1];
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= configuration.getNumCustomers(); i++) {
             Customer customer = new Customer(ticketPool, configuration.getCustomerRetrievalRate(), 5);
             Thread customerThread = new Thread(customer, "Customer-" + i);
             customerThreads.add(customerThread);
             customerThread.start();
         }
 
-        // Wait for all vendor threads to finish
+
         for (Thread vendorThread : vendorThreads) {
             try {
                 vendorThread.join();
@@ -159,7 +168,6 @@ public class CLI {
             }
         }
 
-        // Wait for all customer threads to finish
         for (Thread customerThread : customerThreads) {
             try {
                 customerThread.join();

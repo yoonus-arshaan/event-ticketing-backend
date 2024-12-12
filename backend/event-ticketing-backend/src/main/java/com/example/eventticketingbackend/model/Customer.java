@@ -23,7 +23,6 @@ public class Customer implements Runnable {
             Ticket ticket = ticketPool.removeTicket();
             ticket.marksAsSold();
             logger.info("Ticket bought by " + Thread.currentThread().getName() + " is " + ticket);
-//            System.out.println("Ticket bought by " + Thread.currentThread().getName() + " is " + ticket);
 
             try {
                 Thread.sleep(customerRetrievalRate * 1000);
