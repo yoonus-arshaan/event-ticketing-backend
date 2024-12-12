@@ -1,0 +1,59 @@
+:root {
+  --primary-color: #007bff; /* Replace with your primary color */
+  --secondary-color: #f4f4f4; /* Light background color for the navbar */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #5c6bc0;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-logo .logo {
+  height: 40px; /* Set a fixed size for the logo */
+  width: auto;
+}
+
+.navbar-logo .brand-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-decoration: none; /* Remove underline from the brand name */
+  cursor: pointer;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links li {
+  font-size: 1rem;
+  color: #333; /* Dark text color */
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.navbar-links li:hover {
+  color: var(--primary-color);
+  transform: scale(1.05); /* Slightly increase the size on hover for effect */
+}
+
+.navbar-links li[routerLinkActive] {
+  font-weight: bold;
+  color: var(--primary-color); /* Highlight active link with primary color */
+}

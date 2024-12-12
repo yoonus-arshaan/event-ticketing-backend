@@ -1,0 +1,85 @@
+<app-header></app-header>
+
+<div class="form-container">
+  <h2>Complete the Configuration before Starting the System</h2>
+  <form #configurationForm="ngForm" (ngSubmit)="onSubmit(configurationForm)" novalidate>
+    <!-- Event Name -->
+    <label for="eventName">Event Name:</label>
+    <input type="text" id="eventName" name="eventName" placeholder="Enter event name" ngModel required #eventName="ngModel">
+    <div *ngIf="eventName.invalid && eventName.touched" class="error-message">
+      Event name is required.
+    </div>
+
+    <!-- Total Tickets -->
+    <label for="totalTickets">Total Number of Tickets:</label>
+    <input type="number" id="totalTickets" name="totalTickets" placeholder="Enter total tickets" ngModel required min="0" #totalTickets="ngModel">
+    <div *ngIf="totalTickets.invalid && totalTickets.touched" class="error-message">
+      Total tickets must be a non-negative number.
+    </div>
+
+    <!-- Ticket Release Rate -->
+    <label for="ticketReleaseRate">Ticket Release Rate:</label>
+    <select id="ticketReleaseRate" name="ticketReleaseRate" ngModel required #ticketReleaseRate="ngModel">
+      <option value="" disabled selected>Select rate</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <div *ngIf="ticketReleaseRate.invalid && ticketReleaseRate.touched" class="error-message">
+      Ticket release rate is required.
+    </div>
+
+    <!-- Customer Retrieval Rate -->
+    <label for="customerRetrievalRate">Customer Retrieval Rate: 1-10</label>
+    <div class="slider-container">
+      <input type="range" id="customerRetrievalRate" name="customerRetrievalRate" min="1" max="10" step="1" value="5" ngModel required #customerRetrievalRate="ngModel" />
+    </div>
+    <div *ngIf="customerRetrievalRate.invalid && customerRetrievalRate.touched" class="error-message">
+      Customer retrieval rate is required.
+    </div>
+
+    <!-- Maximum Ticket Capacity -->
+    <label for="maxTicketCapacity">Maximum Ticket Capacity:</label>
+    <input type="number" id="maxTicketCapacity" name="maxTicketCapacity" placeholder="Enter max capacity" ngModel required min="0" #maxTicketCapacity="ngModel">
+    <div *ngIf="maxTicketCapacity.invalid && maxTicketCapacity.touched" class="error-message">
+      Maximum ticket capacity must be a non-negative number.
+    </div>
+
+    <!-- Number of Customers -->
+    <label for="numCustomers">Number of Customers:</label>
+    <input type="number" id="numCustomers" name="numCustomers" placeholder="Enter number of customers" ngModel required min="0" #numCustomers="ngModel">
+    <div *ngIf="numCustomers.invalid && numCustomers.touched" class="error-message">
+      Number of customers must be a non-negative number.
+    </div>
+
+    <!-- Number of Vendors -->
+    <label for="numVendors">Number of Vendors:</label>
+    <input type="number" id="numVendors" name="numVendors" placeholder="Enter number of vendors" ngModel required min="0" #numVendors="ngModel">
+    <div *ngIf="numVendors.invalid && numVendors.touched" class="error-message">
+      Number of vendors must be a non-negative number.
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="configurationForm.invalid">Save Configuration</button>
+  </form>
+
+  <br>
+  <br>
+  <div *ngIf="configuration()">
+    <h3>Current Configuration</h3>
+    <p>Event Name: {{ configuration().eventName }}</p>
+    <p>Total Tickets: {{ configuration().totalTickets }}</p>
+    <p>Ticket Release Rate: {{ configuration().ticketReleaseRate }}</p>
+    <p>Customer Retrieval Rate: {{ configuration().customerRetrievalRate }}</p>
+    <p>Max Ticket Capacity: {{ configuration().maxTicketCapacity }}</p>
+    <p>Number of Customers: {{ configuration().numCustomers }}</p>
+    <p>Number of Vendors: {{ configuration().numVendors }}</p>
+  </div>
+</div>
