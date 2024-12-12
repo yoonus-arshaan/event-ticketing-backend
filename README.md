@@ -49,6 +49,7 @@ The **CLI** simulates real-time interactions between customers and vendors.
 
 1. Clone the project repository:
    ```bash
+   yoonus-arshaan/event-ticketing-backend.git
    
 Navigate to the CLI class and run the simulation:
 bash
