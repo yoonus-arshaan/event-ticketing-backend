@@ -53,7 +53,7 @@ public class TicketPool {
         return ticket;
     }
 
-    public synchronized int getTicketCount() {
-        return ticketPool.size();
+    public synchronized List<Ticket> getTickets() {
+        return new LinkedList<>(ticketPool);
     }
 }
