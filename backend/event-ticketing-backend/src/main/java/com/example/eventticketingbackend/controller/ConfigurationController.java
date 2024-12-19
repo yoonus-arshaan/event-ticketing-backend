@@ -1,9 +1,9 @@
 /**
  * REST controller for managing system configuration in the Event Ticketing Backend system.
- * <p>
+ *
  * This controller provides endpoints to save and retrieve system configurations.
  * It interacts with the {@link ConfigurationService} to perform the operations.
- * </p>
+ *
  */
 package com.example.eventticketingbackend.controller;
 
@@ -25,10 +25,10 @@ public class ConfigurationController {
 
     /**
      * Saves the system configuration.
-     * <p>
+     *
      * This endpoint accepts a {@link Configuration} object in the request body and saves it
      * using the {@link ConfigurationService}.
-     * </p>
+     *
      *
      * @param configuration the configuration object to be saved
      * @return a message indicating the success of the save operation
@@ -41,10 +41,10 @@ public class ConfigurationController {
 
     /**
      * Retrieves the current system configuration.
-     * <p>
+     *
      * This endpoint returns the saved {@link Configuration} object by invoking
      * the {@link ConfigurationService#loadConfiguration()} method.
-     * </p>
+     *
      *
      * @return the current system configuration wrapped in a {@link ResponseEntity}
      */

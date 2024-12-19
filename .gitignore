@@ -83,3 +83,8 @@ yarn-error.log*       # Yarn logs
 # Miscellaneous
 /backend/.env          # Environment files
 /backend/.history      # History files (if any)
+
+
+# log and config files
+backend/event-ticketing-backend/config.json
+backend/event-ticketing-backend/logs/event-ticketing-log.log
